@@ -21,6 +21,7 @@ class ProduitServiceTest {
         Produit produit = new Produit(1L, "Ordinateur", 999.99, 5);
         produitService.ajouterProduit(produit);
         assertNotNull(produitService.obtenirProduitParId(1L));
+        //
     }
 
     @Test
