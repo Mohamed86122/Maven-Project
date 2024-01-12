@@ -27,17 +27,16 @@ public class ProduitService {
 
 
     public Produit obtenirProduitParId(Long id) {
-        Optional<Produit> produitOptional = produits.stream()
-                .filter(produit -> produit.getId().equals(id))
-                .findFirst();
+        for (Produit produit : produits) {
+            if (produit.getId().equals(id)) {
+                return produit;
+            }
+        }
 
-        produitOptional.ifPresentOrElse(
-                produit -> System.out.println("Produit trouvé : " + produit),
-                () -> System.out.println("Produit non trouvé pour l'ID : " + id)
-        );
-
-        return produitOptional.orElse(null);
+        System.out.println("Produit non trouvé pour l'ID : " + id);
+        return null;
     }
+
     public void mettreAJourProduit(Produit produit) {
 
         if (produitExiste(produit.getId())) {
